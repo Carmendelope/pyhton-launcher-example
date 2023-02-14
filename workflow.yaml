@@ -4,7 +4,10 @@ pre-build:
     args:
       - "-O"
       - "https://s3.amazonaws.com/research.metamind.io/wikitext/wikitext-103-raw-v1.zip"
-  - cmd: "ls"  
+  - cmd: "ls"
+  - cmd: "apt-get"
+    args:
+      - "update"
   - cmd: "apt-get"
     args:
       - "install"
