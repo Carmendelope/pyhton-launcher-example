@@ -8,7 +8,8 @@ pre-build:
       - "install"
       - "zip"
       - "-y"
-pre-exec:      
+pre-exec:   
+  commands:  
   - cmd: "curl"
     args:
       - "-O"
