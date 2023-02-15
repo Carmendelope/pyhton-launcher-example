@@ -15,31 +15,32 @@ def serve():
     return output
 
 def implementation():
-    global output = "<p> tokenizers example </p>"
+    global output
+    output = "<p> tokenizers example </p>"
     print("tokenizers example")
     tokenizer = Tokenizer(BPE(unk_token="[UNK]"))
     trainer = BpeTrainer(special_tokens=["[UNK]", "[CLS]", "[SEP]", "[PAD]", "[MASK]"])
     tokenizer.pre_tokenizer = Whitespace()
 
-    global output = "<p>Initilize files</p>"
+    output = "<p>Initilize files</p>"
     print("Initilize files")
     files = [f"./wikitext-103-raw/wiki.{split}.raw" for split in ["test", "train", "valid"]]
 
-    global output = "<p>Init trainning</p>"
+    output = "<p>Init trainning</p>"
     print("Trainning")
     tokenizer.train(files, trainer)
-    global output = "<p>Trainning finished</p>"
+    output = "<p>Trainning finished</p>"
     print("save the results")
     tokenizer.save("./tokenizer-wiki.json")
-    global output = tokenizer.encode("Hello, y'all! How are you 😁 ?")
-    print(output.tokens)
+    encoders = tokenizer.encode("Hello, y'all! How are you 😁 ?")
+    print(encoders.tokens)
 
     print("numpy example")
     arr = np.array([1, 2, 3, 4, 5])
 
     print(arr)
     
-    global output = "<p> Post processing value </p>"
+    output = "<p> Post processing value </p>"
  
 
 x = threading.Thread(target=implementation)
