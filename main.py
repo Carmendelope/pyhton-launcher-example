@@ -15,16 +15,20 @@ def serve():
     
 app.run(host='0.0.0.0', port=5000)
 
+output = "<p> tokenizers example </p>"
 print("tokenizers example")
 tokenizer = Tokenizer(BPE(unk_token="[UNK]"))
 trainer = BpeTrainer(special_tokens=["[UNK]", "[CLS]", "[SEP]", "[PAD]", "[MASK]"])
 tokenizer.pre_tokenizer = Whitespace()
 
+output = "<p>Initilize files</p>"
 print("Initilize files")
 files = [f"./wikitext-103-raw/wiki.{split}.raw" for split in ["test", "train", "valid"]]
 
+output = "<p>Init trainning</p>"
 print("Trainning")
 tokenizer.train(files, trainer)
+output = "<p>Trainning finished</p>"
 print("save the results")
 tokenizer.save("./tokenizer-wiki.json")
 output = tokenizer.encode("Hello, y'all! How are you 😁 ?")
