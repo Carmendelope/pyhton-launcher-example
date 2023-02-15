@@ -7,15 +7,11 @@ from tokenizers.pre_tokenizers import Whitespace
 
 from flask import Flask
 
-# app = Flask(__name__, static_folder='', static_url_path='')
-# @app.route('/')
-#def galaxy():
-#    return app.send_static_file('index.html')
- 
+output = "<p> Before processing value </p>"
 app = Flask(__name__)
 @app.route('/')
-def init_message():
-    return "<p>started</p>"
+def serve():
+    return output
     
 app.run(host='0.0.0.0', port=5000)
 
@@ -40,3 +36,5 @@ arr = np.array([1, 2, 3, 4, 5])
 print(arr)
 
 print("Example finished!")
+
+output = "<p> Post processing value </p>
