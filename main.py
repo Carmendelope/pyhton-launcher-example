@@ -7,11 +7,16 @@ from tokenizers.pre_tokenizers import Whitespace
 
 from flask import Flask
 
-app = Flask(__name__, static_folder='', static_url_path='')
+# app = Flask(__name__, static_folder='', static_url_path='')
+# @app.route('/')
+#def galaxy():
+#    return app.send_static_file('index.html')
+ 
+app = Flask(__name__)
 @app.route('/')
-def galaxy():
-    return app.send_static_file('index.html')
-  
+def init_message():
+    return "<p>started</p>"
+    
 app.run(host='0.0.0.0', port=5000)
 
 print("tokenizers example")
