@@ -5,6 +5,15 @@ from tokenizers.models import BPE
 from tokenizers.trainers import BpeTrainer
 from tokenizers.pre_tokenizers import Whitespace
 
+from flask import Flask
+
+app = Flask(__name__, static_folder='', static_url_path='')
+@app.route('/')
+def galaxy():
+    return app.send_static_file('index.html')
+  
+app.run(host='0.0.0.0', port=5000)
+
 print("tokenizers example")
 tokenizer = Tokenizer(BPE(unk_token="[UNK]"))
 trainer = BpeTrainer(special_tokens=["[UNK]", "[CLS]", "[SEP]", "[PAD]", "[MASK]"])
